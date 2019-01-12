@@ -74,8 +74,8 @@ ipcMain.on('popout-window', (event, data: ExileWindowEvent) => {
     width: 200,
     minWidth: 150,
     minHeight: 75,
-    // maxHeight: 90,
-    // maxWidth: 230,
+    // maxHeight: 90, // 140 for ladder information
+    // maxWidth: 230, // 350 for ladder information
     skipTaskbar: true,
     show: false,
     frame: false,
@@ -136,8 +136,6 @@ function createWindow(windowType: ExileWindowEnum = ExileWindowEnum.Main) {
     resizable: false,
     icon: path.join(__dirname, 'dist/assets/img/app-icon.png'),
   });
-
-  const filePath: string = null;
 
   if (serve) {
     require('electron-reload')(__dirname, {

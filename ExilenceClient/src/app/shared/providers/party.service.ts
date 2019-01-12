@@ -159,6 +159,7 @@ export class PartyService implements OnDestroy {
         if (playerObj.account === this.currentPlayer.account) {
           playerObj.netWorthSnapshots = Object.assign([], this.currentPlayer.netWorthSnapshots);
           // playerObj.pastAreas = Object.assign([], this.currentPlayer.pastAreas);
+          this.updateLadderPopout(player);
         }
         if (this.selectedPlayerObj.account === playerObj.account) {
           this.selectedPlayer.next(playerObj);
@@ -502,4 +503,18 @@ export class PartyService implements OnDestroy {
     }
   }
   //#endregion
+
+  updateLadderPopout(currentPlayer: Player) {
+    this.electronService.ipcRenderer.send('popout-window-update', {
+      event: 'ladder',
+      data: {
+        level: 99,
+        xph: 100001337,
+        rank: 1,
+        rankChange: 2,
+        classRank: 3,
+        classRankChange: 4,
+      }
+    });
+  }
 }
